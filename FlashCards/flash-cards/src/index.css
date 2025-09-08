@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base font and background */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;  /* light gray for contrast */
+  color: #333;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Keep app centered a bit */
+#root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}

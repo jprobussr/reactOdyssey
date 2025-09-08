@@ -1,0 +1,46 @@
+/* App container */
+.app-container {
+  text-align: center;
+  background-color: #2a1743; /* Slightly lighter purple for contrast */
+  padding: 2rem 4rem;
+  border-radius: 1.6rem;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+  max-width: 60rem;
+  width: 100%;
+}
+
+/* Heading */
+h1 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #c09bd8; /* Muted pastel purple */
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    
+}
+
+/* Button styles (optional for Counter component) */
+button {
+  background-color: #7b2cbf; /* Vibrant purple */
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  font-size: 1.1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #9d4edd;
+}
+
+p {
+    margin-top: 1rem;
+}

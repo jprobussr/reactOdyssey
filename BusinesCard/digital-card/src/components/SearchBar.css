@@ -1,0 +1,24 @@
+.search-wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 2rem;
+    
+    border-radius: 0.5rem;
+    border: 1px solid #24653e;
+    font-size: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-size: 1rem;
+    pointer-events: none;
+}

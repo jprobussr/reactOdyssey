@@ -1,0 +1,95 @@
+/* Bar background + subtle depth */
+.navbar {
+  background-color: #111827;        /* dark slate */
+  color: #fff;
+  border-bottom: 1px solid #0b1220; /* faint line for definition */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Center content and limit width on large screens */
+.nav-inner {
+  max-width: 1200px;        /* desktop container */
+  margin: 0 auto;
+  padding: 1rem 2rem;       /* vertical rhythm matches your original */
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;                /* breathing room between brand and links */
+}
+
+/* Brand (icon + text) */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.brand i {
+  font-size: 1.5rem;
+  color: #60a5fa;           /* soft blue accent */
+}
+
+.brand span {
+  font-weight: 800;
+  font-size: 1.25rem;       /* bigger than links so it anchors the bar */
+  letter-spacing: 0.2px;
+}
+
+/* Links row */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;                /* wide desktop spacing */
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual link */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem 0;       /* taller click target without shifting layout */
+  color: #e5e7eb;           /* slightly muted vs brand */
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: color 150ms ease;
+}
+
+/* Hover/focus: color + underline indicator */
+.nav-link:hover,
+.nav-link:focus-visible {
+  color: #ffffff;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 2px;
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Optional: keep active link brighter even without hover */
+.nav-link.is-active {
+  color: #ffffff;
+}
+
+/* Accessibility: visible focus for keyboard users */
+.nav-link:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 4px;
+}

@@ -1,0 +1,19 @@
+.app {
+    min-height: 100svh;
+    display: flex;
+}
+
+.app-main {
+    padding-block: 1rem;
+}
+
+.cards {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .cards {
+        gap: 1.25rem;
+    }
+}
