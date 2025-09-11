@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="nav-inner">
         <a href="#" className="brand">
           <i className="fas fa-code" aria-hidden="true"></i>
-          Ghost Code Explode
+          UI Design Mind
         </a>
 
         <nav aria-label="Primary">
