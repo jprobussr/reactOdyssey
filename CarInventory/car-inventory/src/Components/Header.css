@@ -1,0 +1,19 @@
+.header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #1a1033, #0e0b16);
+    color: #eaeaea;
+    border-bottom: 2px solid #7c3aed;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #a855f7
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  color: #9d8fc2; /* muted purple */
+  margin-top: 0.5rem;
+}

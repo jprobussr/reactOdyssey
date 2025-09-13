@@ -1,0 +1,26 @@
+/* Jokes.css */
+.joke {
+  background-color: #2a2a40; /* card bg */
+  border-left: 4px solid #a78bfa; /* lavender purple accent */
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.joke:hover {
+  transform: translateY(-3px);
+}
+
+.joke-setup {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.joke-punchline {
+  font-size: 1.4rem;
+  color: #cfcfcf;
+}
