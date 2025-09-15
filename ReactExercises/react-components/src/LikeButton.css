@@ -1,0 +1,37 @@
+.like-button {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.like-button__btn {
+  padding: 0.6rem 1rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #f1f1f1;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s;
+}
+
+.like-button__btn:hover {
+  background: #333;
+  border-color: #444;
+}
+
+.like-button__btn:focus {
+  outline: none;
+  border-color: #facc15; /* gold focus ring to match your theme */
+  box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.25);
+}
+
+/* When liked, give a subtle red accent */
+.like-button__btn.is-liked {
+  background: #1f1f1f;
+  border-color: #f87171;
+  box-shadow: inset 0 0 0 1px #f87171;
+}
+
+.hint {
+  color: #bbb;
+  font-size: 0.95rem;
+}

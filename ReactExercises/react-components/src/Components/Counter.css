@@ -1,0 +1,33 @@
+.counter {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.counter__value {
+  font-size: 1.3rem;
+  color: #ddd;
+}
+
+.counter__buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.counter__buttons button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #333;
+  border-radius: 6px;
+  background: #2a2a2a;
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.counter__buttons button:hover {
+  background: #333333;
+  border-color: #444;
+}
+
+.counter__buttons .secondary {
+  background: #1f1f1f;
+}
