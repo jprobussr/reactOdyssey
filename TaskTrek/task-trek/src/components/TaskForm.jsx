@@ -26,8 +26,6 @@ const TaskForm = ({ setTasks }) => {
     }
   };
 
-  
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -39,15 +37,21 @@ const TaskForm = ({ setTasks }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(taskData);
-    setTasks(prev => {
-      return [...prev, taskData]
-    })
+    setTasks((prev) => {
+      return [...prev, taskData];
+    });
+    setTaskData({
+      task: '',
+      status: 'todo',
+      tags: [],
+    });
   };
 
   return (
     <header className="app_header">
       <form onSubmit={handleSubmit}>
         <input
+          value={taskData.task}
           name="task"
           type="text"
           className="task_input"
@@ -80,13 +84,14 @@ const TaskForm = ({ setTasks }) => {
 
           <div>
             <select
+            value={taskData.status}
               name="status"
               className="task_status"
               onChange={handleChange}
             >
               <option value="todo">To do</option>
               <option value="doing">Doing</option>
-              <option value="Done">Done</option>
+              <option value="done">Done</option>
             </select>
             <button type="submit" className="task_submit">
               ➕ Add Task

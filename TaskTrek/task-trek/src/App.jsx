@@ -8,19 +8,37 @@ import DoneIcon from './assets/check-mark-button.png';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
-  console.log('Task', tasks);
+
+  const handleDelete = (taskIndex) => {
+    const newTask = tasks.filter((task, index) => index !== taskIndex);
+    setTasks(newTask);
+  };
+
   return (
     <div className="app">
       <TaskForm setTasks={setTasks} />
       <main className="app_main">
-        <TaskColumn title="To do" icon={TodoIcon} tasks={tasks} status="todo" />
+        <TaskColumn 
+        title="To do" 
+        icon={TodoIcon} 
+        tasks={tasks} 
+        status="todo"
+        handleDelete={handleDelete} 
+        />
         <TaskColumn
           title="Doing"
           icon={DoingIcon}
           tasks={tasks}
           status="doing"
+          handleDelete={handleDelete}
         />
-        <TaskColumn title="Done" icon={DoneIcon} tasks={tasks} status="done" />
+        <TaskColumn 
+        title="Done" 
+        icon={DoneIcon} 
+        tasks={tasks} 
+        status="done"
+        handleDelete={handleDelete} 
+        />
       </main>
     </div>
   );
