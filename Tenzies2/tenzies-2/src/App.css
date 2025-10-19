@@ -1,0 +1,28 @@
+.dice {
+  display: grid;
+  grid-template-columns: repeat(5, 64px);
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.die {
+  min-width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #1a1a25;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.die[aria-pressed='true'] {
+  outline: 2px solid var(--accent);
+  background: #6e6e7b;
+}
+
+.win {
+  margin: 0.5rem 0 1rem;
+  font-weight: 600;
+}
