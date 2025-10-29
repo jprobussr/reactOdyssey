@@ -46,3 +46,16 @@ section.game-status > h2 {
   font-size: 1.25rem;
   margin: 5px;
 }
+
+.language-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  max-width: 350px;
+}
+
+.chips {
+  border-radius: 3px;
+  padding: 5px;
+}
