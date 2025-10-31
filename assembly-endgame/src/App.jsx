@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { languages } from './languages.js';
 
 const AssemblyEndgame = () => {
+  const [currentWord, setCurrentWord] = useState('typescript');
+  const [guessedLetter, setGuessedLetter] = useState([]);
+  console.log(guessedLetter);
+
+  const addGuessedLetter = (letter) => {
+    setGuessedLetter((prev) =>
+      prev.includes(letter) ? prev : [...prev, letter]
+    );
+  };
+
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
   const langEl = languages.map((lang) => {
     const styles = {
       backgroundColor: lang.backgroundColor,
@@ -10,11 +22,21 @@ const AssemblyEndgame = () => {
     };
 
     return (
-      <span className='chips' style={styles} key={lang.name}>
+      <span className="chip" style={styles} key={lang.name}>
         {lang.name}
       </span>
-    )
+    );
   });
+
+  const letterElements = currentWord
+    .split('')
+    .map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
+
+  const keyboardElements = alphabet.split('').map((letter) => (
+    <button key={letter} onClick={() => addGuessedLetter(letter)}>
+      {letter.toUpperCase()}
+    </button>
+  ));
 
   return (
     <main>
@@ -31,9 +53,11 @@ const AssemblyEndgame = () => {
         <p>Well Done! 🥳</p>
       </section>
 
-      <section className='language-chips'>
-        {langEl}
-      </section>
+      <section className="language-chips">{langEl}</section>
+
+      <section className="word">{letterElements}</section>
+
+      <section className="keyboard">{keyboardElements}</section>
     </main>
   );
 };
