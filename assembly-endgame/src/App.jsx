@@ -7,13 +7,13 @@ const AssemblyEndgame = () => {
   const [guessedLetter, setGuessedLetter] = useState([]);
   console.log(guessedLetter);
 
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
   const addGuessedLetter = (letter) => {
     setGuessedLetter((prev) =>
       prev.includes(letter) ? prev : [...prev, letter]
     );
   };
-
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   const langEl = languages.map((lang) => {
     const styles = {
@@ -58,6 +58,8 @@ const AssemblyEndgame = () => {
       <section className="word">{letterElements}</section>
 
       <section className="keyboard">{keyboardElements}</section>
+
+      <button className="new-game">New Game</button>
     </main>
   );
 };
