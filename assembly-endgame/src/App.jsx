@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
 import { languages } from './languages.js';
+import { clsx } from 'clsx';
 
 const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState('typescript');
-  const [guessedLetter, setGuessedLetter] = useState([]);
-  console.log(guessedLetter);
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  console.log(guessedLetters);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   const addGuessedLetter = (letter) => {
-    setGuessedLetter((prev) =>
+    setGuessedLetters((prev) =>
       prev.includes(letter) ? prev : [...prev, letter]
     );
   };
@@ -32,11 +33,25 @@ const AssemblyEndgame = () => {
     .split('')
     .map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
 
-  const keyboardElements = alphabet.split('').map((letter) => (
-    <button key={letter} onClick={() => addGuessedLetter(letter)}>
-      {letter.toUpperCase()}
-    </button>
-  ));
+  const keyboardElements = alphabet.split('').map((letter) => {
+    const isGuessed = guessedLetters.includes(letter);
+    const isCorrect = isGuessed && currentWord.includes(letter);
+    const isWrong = isGuessed && !currentWord.includes(letter);
+    const className = clsx({
+      correct: isCorrect,
+      wrong: isWrong,
+    });
+
+    return (
+      <button
+        className={className}
+        key={letter}
+        onClick={() => addGuessedLetter(letter)}
+      >
+        {letter.toUpperCase()}
+      </button>
+    );
+  });
 
   return (
     <main>
