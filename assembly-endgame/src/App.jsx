@@ -4,19 +4,19 @@ import { languages } from './languages.js';
 import { clsx } from 'clsx';
 
 const AssemblyEndgame = () => {
-  const [currentWord, setCurrentWord] = useState('typescript');
+  const [currentWord, setCurrentWord] = useState('javaScript');
   const [guessedLetters, setGuessedLetters] = useState([]);
   console.log(guessedLetters);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   const addGuessedLetter = (letter) => {
-    setGuessedLetters((prev) =>
-      prev.includes(letter) ? prev : [...prev, letter]
-    );
+    setGuessedLetters((prev) => {
+      return prev.includes(letter) ? prev : [...prev, letter];
+    });
   };
 
-  const langEl = languages.map((lang) => {
+  const languageElements = languages.map((lang) => {
     const styles = {
       backgroundColor: lang.backgroundColor,
       color: lang.color,
@@ -29,25 +29,22 @@ const AssemblyEndgame = () => {
     );
   });
 
-  const letterElements = currentWord
-    .split('')
-    .map((letter, index) => <span key={index}>{letter.toUpperCase()}</span>);
+  const letterElements = currentWord.split('').map((letter, index) => {
+    return <span key={index}>{letter.toUpperCase()}</span>;
+  });
 
   const keyboardElements = alphabet.split('').map((letter) => {
     const isGuessed = guessedLetters.includes(letter);
     const isCorrect = isGuessed && currentWord.includes(letter);
     const isWrong = isGuessed && !currentWord.includes(letter);
+
     const className = clsx({
       correct: isCorrect,
       wrong: isWrong,
     });
 
     return (
-      <button
-        className={className}
-        key={letter}
-        onClick={() => addGuessedLetter(letter)}
-      >
+      <button className={className} key={letter} onClick={() => addGuessedLetter(letter)}>
         {letter.toUpperCase()}
       </button>
     );
@@ -56,7 +53,7 @@ const AssemblyEndgame = () => {
   return (
     <main>
       <header>
-        <h1>Assembly: Endgame</h1>
+        <h1>Hang The Loser!</h1>
         <p>
           Guess the word within 8 attempts to keep the programming world safe
           from Assembly!
@@ -68,7 +65,7 @@ const AssemblyEndgame = () => {
         <p>Well Done! 🥳</p>
       </section>
 
-      <section className="language-chips">{langEl}</section>
+      <section className="language-chips">{languageElements}</section>
 
       <section className="word">{letterElements}</section>
 
