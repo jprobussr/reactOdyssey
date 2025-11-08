@@ -6,33 +6,41 @@ import clsx from 'clsx';
 const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState('python');
   const [guessedLetters, setGuessedLetters] = useState([]);
- 
 
-  const wrongGuessCount = guessedLetters.filter((letter) => !currentWord.includes(letter)).length;
-  console.log(wrongGuessCount)
+  const wrongGuessCount = guessedLetters.filter(
+    (letter) => !currentWord.includes(letter)
+  ).length;
+  console.log(wrongGuessCount);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   const addGuessedLetter = (letter) => {
     setGuessedLetters((prev) =>
-      guessedLetters.includes(letter) ? prev : [...prev, letter]
+      prev.includes(letter) ? prev : [...prev, letter]
     );
   };
 
-  const languageElements = languages.map((lang) => {
+  const languageElements = languages.map((lang, index) => {
+    const isLanguageLost = index < wrongGuessCount;
+    const className = clsx('chip', isLanguageLost && 'lost');
+
     const styles = {
       backgroundColor: lang.backgroundColor,
       color: lang.color,
     };
     return (
-      <span style={styles} className="chip" key={lang.name}>
+      <span style={styles} className={className} key={lang.name}>
         {lang.name}
       </span>
     );
   });
 
   const letterElements = currentWord.split('').map((letter, index) => {
-    return <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ''}</span>;
+    return (
+      <span key={index}>
+        {guessedLetters.includes(letter) ? letter.toUpperCase() : ''}
+      </span>
+    );
   });
 
   const keyboardElements = alphabet.split('').map((letter) => {
@@ -45,7 +53,11 @@ const AssemblyEndgame = () => {
     });
 
     return (
-      <button className={classNames} onClick={() => addGuessedLetter(letter)} key={letter}>
+      <button
+        className={classNames}
+        onClick={() => addGuessedLetter(letter)}
+        key={letter}
+      >
         {letter.toUpperCase()}
       </button>
     );
