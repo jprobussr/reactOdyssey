@@ -10,7 +10,12 @@ const AssemblyEndgame = () => {
   const wrongGuessCount = guessedLetters.filter(
     (letter) => !currentWord.includes(letter)
   ).length;
-  console.log(wrongGuessCount);
+
+  const isGameWon = currentWord
+    .split('')
+    .every((letter) => guessedLetters.includes(letter));
+  const isGameLost = wrongGuessCount >= languages.length - 1;
+  const isGameOver = isGameWon || isGameLost;
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -63,6 +68,33 @@ const AssemblyEndgame = () => {
     );
   });
 
+  const gameStatusClass = clsx('game-status', {
+    won: isGameWon,
+    lost: isGameLost,
+  });
+
+  const renderGameStatus = () => {
+    if (!isGameOver) {
+      return null;
+    }
+
+    if (isGameWon) {
+      return (
+        <>
+          <h2>You Win!</h2>
+          <p>Well Done! 🥳</p>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h2>Game Over</h2>
+          <p>Try Again!</p>
+        </>
+      );
+    }
+  };
+
   return (
     <main>
       <header>
@@ -73,9 +105,8 @@ const AssemblyEndgame = () => {
         </p>
       </header>
 
-      <section className="game-status">
-        <h2>You Win!</h2>
-        <p>Well Done! 🥳</p>
+      <section className={gameStatusClass}>
+        {renderGameStatus()}
       </section>
 
       <section className="language-chips">{languageElements}</section>
@@ -84,7 +115,7 @@ const AssemblyEndgame = () => {
 
       <section className="keyboard">{keyboardElements}</section>
 
-      <button className="new-game">New Game</button>
+      {isGameOver && <button className="new-game">New Game</button>}
     </main>
   );
 };
