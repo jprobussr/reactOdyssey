@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import { languages } from './languages.js';
 import clsx from 'clsx';
+import { getFarewellText } from './utils.js';
+
 
 const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState('python');
@@ -16,6 +18,9 @@ const AssemblyEndgame = () => {
     .every((letter) => guessedLetters.includes(letter));
   const isGameLost = wrongGuessCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+  const isLastGuessIncorrect =
+    lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -71,11 +76,16 @@ const AssemblyEndgame = () => {
   const gameStatusClass = clsx('game-status', {
     won: isGameWon,
     lost: isGameLost,
+    farewell: !isGameOver && isLastGuessIncorrect,
   });
 
   const renderGameStatus = () => {
-    if (!isGameOver) {
-      return null;
+    if (!isGameOver && isLastGuessIncorrect) {
+      return (
+        <p className="farewell-message">
+          {getFarewellText(languages[wrongGuessCount - 1].name)}
+        </p>
+      );
     }
 
     if (isGameWon) {
@@ -85,7 +95,7 @@ const AssemblyEndgame = () => {
           <p>Well Done! 🥳</p>
         </>
       );
-    } else {
+    } if (isGameLost) {
       return (
         <>
           <h2>Game Over</h2>
@@ -93,6 +103,8 @@ const AssemblyEndgame = () => {
         </>
       );
     }
+
+    return null;
   };
 
   return (
@@ -105,9 +117,7 @@ const AssemblyEndgame = () => {
         </p>
       </header>
 
-      <section className={gameStatusClass}>
-        {renderGameStatus()}
-      </section>
+      <section className={gameStatusClass}>{renderGameStatus()}</section>
 
       <section className="language-chips">{languageElements}</section>
 
