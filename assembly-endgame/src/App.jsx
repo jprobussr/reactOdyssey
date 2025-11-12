@@ -4,21 +4,24 @@ import { languages } from './languages.js';
 import clsx from 'clsx';
 import { getFarewellText } from './utils.js';
 
-
 const AssemblyEndgame = () => {
-  const [currentWord, setCurrentWord] = useState('python');
+  const [currentWord, setCurrentWord] = useState('css');
   const [guessedLetters, setGuessedLetters] = useState([]);
 
-  const wrongGuessCount = guessedLetters.filter(
-    (letter) => !currentWord.includes(letter)
-  ).length;
+  // Wrong Guess Count
+ const wrongGuessCount = guessedLetters.filter((letter) => !currentWord.includes(letter)).length;
+ 
+ // isGameWon
+ const isGameWon = currentWord.split('').every((letter) => guessedLetters.includes(letter));
+ 
+ console.log(wrongGuessCount, isGameWon)
 
-  const isGameWon = currentWord
-    .split('')
-    .every((letter) => guessedLetters.includes(letter));
   const isGameLost = wrongGuessCount >= languages.length - 1;
+
   const isGameOver = isGameWon || isGameLost;
+
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+
   const isLastGuessIncorrect =
     lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
 
@@ -95,7 +98,8 @@ const AssemblyEndgame = () => {
           <p>Well Done! 🥳</p>
         </>
       );
-    } if (isGameLost) {
+    }
+    if (isGameLost) {
       return (
         <>
           <h2>Game Over</h2>
