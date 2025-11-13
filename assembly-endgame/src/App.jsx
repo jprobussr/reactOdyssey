@@ -9,12 +9,14 @@ const AssemblyEndgame = () => {
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   // Wrong Guess Count
- const wrongGuessCount = guessedLetters.filter((letter) => !currentWord.includes(letter)).length;
- 
- // isGameWon
- const isGameWon = currentWord.split('').every((letter) => guessedLetters.includes(letter));
- 
- console.log(wrongGuessCount, isGameWon)
+  const wrongGuessCount = guessedLetters.filter(
+    (letter) => !currentWord.includes(letter)
+  ).length;
+
+  // isGameWon
+  const isGameWon = currentWord
+    .split('')
+    .every((letter) => guessedLetters.includes(letter));
 
   const isGameLost = wrongGuessCount >= languages.length - 1;
 
@@ -24,6 +26,7 @@ const AssemblyEndgame = () => {
 
   const isLastGuessIncorrect =
     lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
+  console.log(isLastGuessIncorrect);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
