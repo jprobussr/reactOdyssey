@@ -3,11 +3,12 @@ import './App.css';
 import { languages } from './languages.js';
 import clsx from 'clsx';
 import { getFarewellText, getRandomWord } from './utils.js';
+import Confetti from 'react-confetti';
 
 const AssemblyEndgame = () => {
   const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const [guessedLetters, setGuessedLetters] = useState([]);
-console.log(currentWord)
+  console.log(currentWord);
   const numGuessesLeft = languages.length - 1;
 
   // Wrong Guess Count
@@ -53,9 +54,13 @@ console.log(currentWord)
   });
 
   const letterElements = currentWord.split('').map((letter, index) => {
+    const shouldRevealLetter = isGameLost || guessedLetters.includes(letter);
+    const letterClassName = clsx(
+      isGameLost && !guessedLetters.includes(letter) && 'missed-letter'
+    );
     return (
-      <span key={index}>
-        {guessedLetters.includes(letter) ? letter.toUpperCase() : ''}
+      <span key={index} className={letterClassName}>
+        {shouldRevealLetter ? letter.toUpperCase() : ''}
       </span>
     );
   });
@@ -124,6 +129,9 @@ console.log(currentWord)
 
   return (
     <main>
+      {
+        isGameWon && <Confetti />
+      }
       <header>
         <h1>Assembly: Endgame</h1>
         <p>
