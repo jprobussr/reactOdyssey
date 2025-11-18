@@ -146,7 +146,7 @@ const AssemblyEndgame = () => {
 
       <section className="language-chips">{languageElements}</section>
 
-      <section className="word">{letterElements}</section>
+      
 
       {/* Combined visually-hidden aria-live region for status updates */}
       <section className="sr-only" aria-live="polite" role="status">
@@ -168,6 +168,7 @@ const AssemblyEndgame = () => {
       </section>
 
       <section className="keyboard">{keyboardElements}</section>
+      <section className="word">{letterElements}</section>
 
       {isGameOver && (
         <button className="new-game" onClick={startNewGame}>
