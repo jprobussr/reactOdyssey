@@ -4,16 +4,14 @@ import Button from './components/Button.jsx';
 import './App.css';
 
 const ThemeContext = React.createContext();
-
 const App = () => {
   const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  }
-
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className={`${theme}-theme`}>
         <Header />
         <Button />
@@ -23,5 +21,4 @@ const App = () => {
 };
 
 export default App;
-
 export { ThemeContext };
