@@ -9,6 +9,7 @@ const Menu = ({ children }) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+  
   return (
     <MenuContext.Provider value={{ open, toggle }}>
       <div className="menu">{children}</div>
@@ -17,4 +18,4 @@ const Menu = ({ children }) => {
 };
 
 export default Menu;
-export { MenuContext }
+export { MenuContext };
