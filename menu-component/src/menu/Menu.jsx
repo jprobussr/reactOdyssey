@@ -9,9 +9,8 @@ const Menu = ({ children }) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  
   return (
-    <MenuContext.Provider value={{ open, toggle }}>
+    <MenuContext.Provider value={{open, toggle}}>
       <div className="menu">{children}</div>
     </MenuContext.Provider>
   );
