@@ -1,0 +1,53 @@
+.app {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #a78bfa;
+}
+
+.form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  flex: 1;
+  background: #1a1b27;
+  border: 1px solid #3a3b4d;
+  padding: 0.6rem 0.8rem;
+  color: #fff;
+  border-radius: 6px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #8b5cf6;
+}
+
+button {
+  background: #8b5cf6;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #7c3aed;
+}
+
+.list {
+  padding-left: 1.4rem;
+}
+
+.list li {
+  margin-bottom: 0.4rem;
+  color: #e5e5e5;
+}
