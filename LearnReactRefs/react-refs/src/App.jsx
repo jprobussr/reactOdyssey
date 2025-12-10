@@ -4,40 +4,34 @@ import './App.css';
 const App = () => {
   const [text, setText] = useState('');
   const [list, setList] = useState([]);
-  const inputRef = React.useRef(null);
 
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!text) return;
-
-    setList(prev => [...prev, text]);
+    setList((prev) => [...prev, text]);
     setText('');
-    inputRef.current.focus();
-  }
+  };
 
   return (
     <div className="app">
-      <h2>React Project Ideas</h2>
-
-      <form onSubmit={handleSubmit} className="form">
+      <h2>React Ideas App</h2>
+      <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
           onChange={handleChange}
           value={text}
-          placeholder="Project ideas"
-          ref={inputRef}
+          placeholder="Enter Idea"
         />
-
-        <button>Add</button>
+        <button>Submit</button>
       </form>
 
       <ol className="list">
-        {list.map((item, i) => (
-          <li key={i}>{item}</li>
+        {list.map((item, index) => (
+          <li key={index}>{item}</li>
         ))}
       </ol>
     </div>
