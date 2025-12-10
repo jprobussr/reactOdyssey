@@ -5,26 +5,31 @@ const App = () => {
   const [text, setText] = useState('');
   const [list, setList] = useState([]);
 
+  const inputRef = React.useRef(null);
+
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!text) return;
-    setList((prev) => [...prev, text]);
+
+    setList((prevList) => [...prevList, text]);
     setText('');
+    inputRef.current.focus();
   };
 
   return (
     <div className="app">
-      <h2>React Ideas App</h2>
+      <h2>React Project Ideas</h2>
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
-          onChange={handleChange}
           value={text}
-          placeholder="Enter Idea"
+          onChange={handleChange}
+          ref={inputRef}
+          placeholder="Enter your idea..."
         />
         <button>Submit</button>
       </form>
